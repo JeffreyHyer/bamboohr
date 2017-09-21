@@ -1,0 +1,21 @@
+{
+    "name": "jeffreyhyer/bamboohr",
+    "description": "PHP SDK for the BambooHR API",
+    "keywords": ["bamboohr", "api", "sdk", "unofficial", "php", "php7"],
+    "version": "0.1.0",
+    "license": "MIT",
+    "homepage": "https://github.com/jeffreyhyer/bamboohr",
+    "support": {
+        "issues": "https://github.com/jeffreyhyer/bamboohr/issues",
+        "source": "https://github.com/jeffreyhyer/bamboohr"
+    },
+    "require": {
+        "php": ">=7.0.0",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "BambooHR\\": "src/"
+        }
+    }
+}
