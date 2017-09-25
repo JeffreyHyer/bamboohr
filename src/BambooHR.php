@@ -40,9 +40,9 @@ class BambooHR
     /**
      * BambooHR API constructor
      *
-     * @param string $company
-     * @param string $token
-     * @param array  $options
+     * @param string $company   The company name/subdomain in BambooHR
+     * @param string $token     The API Token to use when sending requests
+     * @param array  $options   An array of options ['base_uri', 'version'] to override the defaults
      */
     public function __construct($company = "", $token = "", $options = [])
     {
