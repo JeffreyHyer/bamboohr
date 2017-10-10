@@ -41,7 +41,7 @@ class TimeOff extends AbstractApi
      *                          'previousRequest' => [integer]
      *                      ]
      * 
-     * @return void
+     * @return BambooHR\Api\Response
      */
     public function submitRequest($employeeId, array $data = [])
     {
@@ -70,6 +70,15 @@ class TimeOff extends AbstractApi
         return $this->put("employees/{$employeeId}/time_off/request", $xml);
     }
 
+    /**
+     * Change the status of a time off request
+     *
+     * @param string $requestId
+     * @param string $status
+     * @param string $note
+     * 
+     * @return BambooHR\Api\Response
+     */
     public function changeRequestStatus($requestId, $status, string $note = "")
     {
         $xml = "
@@ -96,12 +105,6 @@ class TimeOff extends AbstractApi
         $this->put("employees/{$employeeId}/time_off/history", $xml);
     }
 
-    // v1
-    // public function assignedPolicies($employeeId)
-    // {
-    //     return $this->get("employees/{$employeeId}/time_off/policies");
-    // }
-
     public function assignedPolicies($employeeId)
     {
         $this->bamboo->options['version'] = 'v1_1';
@@ -121,6 +124,17 @@ class TimeOff extends AbstractApi
     public function whoIsOut(string $start = "", string $end = "")
     {
         return $this->whosOut($start, $end);
+    }
+
+    public function calculate($employeeId, $date = null)
+    {
+        if (is_null($date)) {
+            $date = date('Y-m-d');
+        } else {
+            $date = date('Y-m-d', strtotime($date));
+        }
+
+        return $this->get("employees/{$employeeId}/time_off/calculator", ['end' => $date]);
     }
 
 }

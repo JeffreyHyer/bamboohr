@@ -1,0 +1,35 @@
+/* Background */ .chroma { background-color: #EEEEEE; padding: 8px; border-radius: 2px; box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.1); }
+/* Error */ .chroma .ss4 { color: #ff0000; background-color: #ffaaaa }
+/* LineHighlight */ .chroma .hl { background-color: #ffffcc; display: block; width: 100% }
+/* LineNumbers */ .chroma .ln { ; margin-right: 0.4em; padding: 0 0.4em 0 0.4em; }
+/* Keyword */ .chroma .s3e8 { color: #0000aa }
+/* KeywordType */ .chroma .s3ee { color: #00aaaa }
+/* NameAttribute */ .chroma .s7d1 { color: #1e90ff }
+/* NameBuiltin */ .chroma .s7d2 { color: #00aaaa }
+/* NameClass */ .chroma .s7d4 { color: #00aa00 }
+/* NameConstant */ .chroma .s7d5 { color: #aa0000 }
+/* NameDecorator */ .chroma .s7d6 { color: #888888 }
+/* NameEntity */ .chroma .s7d7 { color: #880000; font-weight: bold }
+/* NameFunction */ .chroma .s7d9 { color: #00aa00 }
+/* NameNamespace */ .chroma .s7dd { color: #00aaaa }
+/* NameTag */ .chroma .s7e2 { color: inherit; }
+/* NameVariable */ .chroma .s7e3 { color: #aa0000 }
+/* LiteralString */ .chroma .sc1c { color: #aa5500 }
+/* LiteralStringRegex */ .chroma .sc2a { color: #009999 }
+/* LiteralStringSymbol */ .chroma .sc2c { color: #0000aa }
+/* LiteralNumber */ .chroma .sc80 { color: #009999 }
+/* OperatorWord */ .chroma .sfa1 { color: #0000aa }
+/* Comment */ .chroma .s1770 { color: #aaaaaa; }
+/* CommentSpecial */ .chroma .s1774 { color: #0000aa; font-style: italic }
+/* CommentPreproc */ .chroma .s17d4 { color: #4c8317 }
+/* GenericDeleted */ .chroma .s1b59 { color: #aa0000 }
+/* GenericEmph */ .chroma .s1b5a { font-style: italic }
+/* GenericError */ .chroma .s1b5b { color: #aa0000 }
+/* GenericHeading */ .chroma .s1b5c { color: #000080; font-weight: bold }
+/* GenericInserted */ .chroma .s1b5d { color: #00aa00 }
+/* GenericOutput */ .chroma .s1b5e { color: #888888 }
+/* GenericPrompt */ .chroma .s1b5f { color: #555555 }
+/* GenericStrong */ .chroma .s1b60 { font-weight: bold }
+/* GenericSubheading */ .chroma .s1b61 { color: #800080; font-weight: bold }
+/* GenericTraceback */ .chroma .s1b62 { color: #aa0000 }
+/* TextWhitespace */ .chroma .s1f41 { color: #bbbbbb }

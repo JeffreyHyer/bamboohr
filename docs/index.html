@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="white">
+        <meta name="generator" content="Hugo 0.29" />
+        
+        
+        
+        <meta name="description" content="">
+
+        
+
+        <title>BambooHR PHP SDK</title>
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="http://jeffreyhyer.github.io/bamboohr/css/styles.css">
+        <link rel="stylesheet" type="text/css" href="http://jeffreyhyer.github.io/bamboohr/css/pygments.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.min.css">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary justify-content-between">
+            <div class="container">
+                <a class="navbar-brand" href="http://jeffreyhyer.github.io/bamboohr/">BambooHR PHP SDK</a>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="http://jeffreyhyer.github.io/bamboohr/">Docs</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Changelog</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/jeffreyhyer/bamboohr"><i class="octicon octicon-mark-github"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container main-container">
+            <div class="row">
+                <div class="sidebar col-3">
+                    <ol>
+                        
+                            
+                                <li>
+                                    <a href="#overview">Overview</a>
+                                    
+                                    
+                                </li>
+                            
+                        
+                            
+                                <li>
+                                    <a href="#installation">Installation</a>
+                                    
+                                    
+                                </li>
+                            
+                        
+                            
+                                <li>
+                                    <a href="#usage">Usage</a>
+                                    
+                                    
+                                </li>
+                            
+                        
+                            
+                                <li>
+                                    <a href="#api-reference">API Reference</a>
+                                    
+                                    
+                                        <ol>
+                                            
+                                                <li>
+                                                    <a href="#bamboohr">BambooHR</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a href="#response">Response</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a href="#employees">Employees</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a href="#company">Company</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a href="#tables">Tables</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a href="#time-off">Time Off</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a href="#photos">Photos</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a href="#metadata">Metadata</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a href="#benefits">Benefits</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a href="#payroll">Payroll</a>
+                                                </li>
+                                            
+                                                <li>
+                                                    <a href="#time-tracking">Time Tracking</a>
+                                                </li>
+                                            
+                                        </ol>
+                                    
+                                </li>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </ol>
+                </div>
+
+                <div class="content col-9">
+                    
+                        <div class="section">
+                            
+                                <h1><a href="#overview" id="overview" class="permalink">#</a>BambooHR PHP SDK</h1>
+                            
+
+                            <br>
+
+                            <ul>
+<li><em>An overview of this library/SDK. What it&rsquo;s used for, etc.</em></li>
+<li><em>Disclaimers and waivers of liability and disassociation</em></li>
+<li><em>Links to similar packages (e.g. Laravel package that implements this SDK)</em></li>
+<li><em>Link to BambooHR and the BambooHR API docs</em></li>
+</ul>
+
+                        </div>
+                    
+                        <div class="section">
+                            
+                                
+                                    <h2><a href="#installation" id="installation" class="permalink">#</a>Installation</h2>
+                                
+                            
+
+                            <br>
+
+                            <p><strong>Via Composer</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="s1f40">$ composer require jeffreyhyer/bamboohr</span></code></pre>
+</div>
+<p><br></p>
+
+<p>Or add the following to your <code>composer.json</code> file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="s1388">{</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s7e2">&#34;require&#34;</span><span class="s1388">:</span><span class="s1f40"> </span><span class="s1388">{</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s7e2">&#34;jeffreyhyer/bamboohr&#34;</span><span class="s1388">:</span><span class="s1f40"> </span><span class="sc1c">&#34;^0.1.2&#34;</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">}</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">}</span></code></pre>
+</div>
+<p><br></p>
+
+<p>Then execute the following command to install the package:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="s1f40">$ composer update</span></code></pre>
+</div>
+                        </div>
+                    
+                        <div class="section">
+                            
+                                
+                                    <h2><a href="#usage" id="usage" class="permalink">#</a>Usage</h2>
+                                
+                            
+
+                            <br>
+
+                            <p>From within your PHP application you can access the BambooHR API with just a couple lines:</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s3e8">require</span><span class="s1f40"> </span><span class="sc1c">&#34;./vendor/autoload.php&#34;</span><span class="s1388">;</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$bamboo</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s3e8">new</span><span class="s1f40"> </span><span class="s7df">BambooHR\BambooHR</span><span class="s1388">(</span><span class="sc1c">&#34;BAMBOO COMPANY SUBDOMAIN&#34;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#34;BAMBOO API TOKEN&#34;</span><span class="s1388">);</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770">// Get the employee directory
+</span><span class="s1770"></span><span class="s7d0">$employees</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employees</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">directory</span><span class="s1388">();</span></code></pre>
+</div>
+                        </div>
+                    
+                        <div class="section">
+                            
+                                
+                                    <h2><a href="#api-reference" id="api-reference" class="permalink">#</a>API Reference</h2>
+                                
+                            
+
+                            <br>
+
+                            <p>&hellip;</p>
+
+                        </div>
+                    
+                        <div class="section">
+                            
+                                
+                                    <h4><a href="#bamboohr" id="bamboohr" class="permalink">#<a/>BambooHR</h4>
+                                
+                            
+
+                            <br>
+
+                            <div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$company</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;demo&#34;</span><span class="s1388">;</span><span class="s1f40">              </span><span class="s1770">// Your company&#39;s BambooHR subdomain (e.g. http://demo.bamboohr.com/)
+</span><span class="s1770"></span><span class="s7d0">$api_key</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="sc1c">&#34;0123456789abcdef&#34;</span><span class="s1388">;</span><span class="s1f40">  </span><span class="s1770">// You API token
+</span><span class="s1770"></span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$bamboo</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s3e8">new</span><span class="s1f40"> </span><span class="s7df">BambooHR\BambooHR</span><span class="s1388">(</span><span class="s7d0">$company</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">$api_key</span><span class="s1388">);</span></code></pre>
+</div>
+<p>Once instantiated you have access to all the BambooHR API endpoints through convenient helper
+methods or properties. Through the use of PHP&rsquo;s <code>__get()</code> and <code>__call()</code> so-called &ldquo;magic&rdquo; methods
+you can access a given API through either it&rsquo;s property or method name or one of a number of aliases.</p>
+
+<p>For example, to access the employee directory you could use any of the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employee</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">directory</span><span class="s1388">();</span><span class="s1f40">     </span><span class="s1770">// &#39;employee&#39; is a &#34;magic&#34; property
+</span><span class="s1770"></span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employees</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">directory</span><span class="s1388">();</span><span class="s1f40">    </span><span class="s1770">// &#39;employees&#39; (plural) is an alias for &#39;employee&#39;
+</span><span class="s1770"></span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employee</span><span class="s1388">()</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">directory</span><span class="s1388">();</span><span class="s1f40">   </span><span class="s1770">// &#39;employee()&#39; is a &#34;magic&#34; method
+</span><span class="s1770"></span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employees</span><span class="s1388">()</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">directory</span><span class="s1388">();</span><span class="s1f40">  </span><span class="s1770">// Using the alias again...
+</span><span class="s1770"></span><span class="s1f40">
+</span><span class="s1f40"></span><span class="sfa0">...</span></code></pre>
+</div>
+                        </div>
+                    
+                        <div class="section">
+                            
+                                
+                                    <h4><a href="#response" id="response" class="permalink">#<a/>Response</h4>
+                                
+                            
+
+                            <br>
+
+                            <p>All calls to the API return an instance of the <code>BambooHR\Api\Response</code> class.</p>
+
+<p>The <code>Response</code> class has a number of convenient abstractions that make working with
+API requests and responses easier including error checking and a standard response format.</p>
+
+<table class="table table-striped table-bordered">
+<thead>
+<tr>
+<th>Method</th>
+<th>Return Type</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><p>hasErrors()</p>
+</td>
+<td><p>boolean</p>
+</td>
+<td><p>Returns <code>true</code> if the request resulted in an error or <code>false</code> otherwise. The BambooHR API returns errors in the response HTTP headers so this is a convenience method that checks for the existence of the error header(s)</p>
+</td>
+</tr>
+
+<tr>
+<td><p>getErrors()</p>
+</td>
+<td><p>array</p>
+</td>
+<td><p>Returns an array of strings that contain the error(s) returned in the response headers</p>
+</td>
+</tr>
+
+<tr>
+<td><p>getCode()</p>
+</td>
+<td><p>integer</p>
+</td>
+<td><p>Returns the HTTP status code of the response (e.g. 200 for OK, 403 for Forbidden, etc)</p>
+</td>
+</tr>
+
+<tr>
+<td><p>getReason()</p>
+</td>
+<td><p>string</p>
+</td>
+<td><p>Returns the HTTP status text of the response (e.g. &quot;OK&quot;, &quot;Forbidden&quot;, etc)</p>
+</td>
+</tr>
+
+<tr>
+<td><p>getResponse()</p>
+</td>
+<td><p>object|array</p>
+</td>
+<td><p>Returns the raw JSON-decoded response from the API</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+                        </div>
+                    
+                        <div class="section">
+                            
+                                
+                                    <h4><a href="#employees" id="employees" class="permalink">#<a/>Employees</h4>
+                                
+                            
+
+                            <br>
+
+                            <p><em>See the BambooHR documentation relating to employees here: <a href="https://www.bamboohr.com/api/documentation/employees.php">https://www.bamboohr.com/api/documentation/employees.php</a></em></p>
+
+<p>Can be accessed via any of the following aliases:</p>
+
+<ul>
+<li>employee</li>
+<li>employees</li>
+</ul>
+
+<hr>
+
+<h4 id="mefields--null">me($fields = null)</h4>
+
+<p><br></p>
+
+<p>Returns the current user as determined by the API key used for the request.</p>
+
+<p><em>This is an alias/shortcut for calling:</em> <code>$bamboo-&gt;employees-&gt;byId(0, $fields)</code></p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770">// Defaults to all fields
+</span><span class="s1770"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employees</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">me</span><span class="s1388">();</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770">// -OR-
+</span><span class="s1770"></span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770">// Specify which fields to return
+</span><span class="s1770"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employees</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">me</span><span class="s1388">([</span><span class="sc1c">&#39;firstName&#39;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#39;lastName&#39;</span><span class="s1388">]);</span></code></pre>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7df">BambooHR\Api\Response</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">code</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">200</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">reason</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">OK</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">errors</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">Array</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">response</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">stdClass</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">id</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">123</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">address1</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">123</span><span class="s1f40"> </span><span class="s7df">North</span><span class="s1f40"> </span><span class="s7df">Main</span><span class="s1f40"> </span><span class="s7df">St</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">address2</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">age</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">25</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">bestEmail</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">test</span><span class="sfa0">@</span><span class="s7df">yourcompany</span><span class="sfa0">.</span><span class="s7df">com</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">birthday</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">12</span><span class="sfa0">-</span><span class="sc80">25</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">city</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Lindon</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">country</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">dateOfBirth</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">1901</span><span class="sfa0">-</span><span class="sc80">01</span><span class="sfa0">-</span><span class="sc80">01</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">department</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">division</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">eeo</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">employeeNumber</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">123456</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">employmentHistoryStatus</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Full</span><span class="sfa0">-</span><span class="s7df">Time</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">ethnicity</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">flsaCode</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Exempt</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">firstName</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">fullName1</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">fullName2</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">fullName3</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40"> </span><span class="s7df">B</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">fullName4</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40"> </span><span class="s7df">B</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">fullName5</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40"> </span><span class="s7df">B</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">displayName</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">gender</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Male</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">hireDate</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">2000</span><span class="sfa0">-</span><span class="sc80">01</span><span class="sfa0">-</span><span class="sc80">01</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">originalHireDate</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">0000</span><span class="sfa0">-</span><span class="sc80">00</span><span class="sfa0">-</span><span class="sc80">00</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">homeEmail</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">john</span><span class="sfa0">@</span><span class="s7df">yourcompany</span><span class="sfa0">.</span><span class="s7df">com</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">homePhone</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">555</span><span class="sfa0">-</span><span class="sc80">123</span><span class="sfa0">-</span><span class="sc80">4567</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">jobTitle</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Job</span><span class="s1f40"> </span><span class="s7df">Title</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">lastChanged</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">2001</span><span class="sfa0">-</span><span class="sc80">01</span><span class="sfa0">-</span><span class="sc80">01</span><span class="s7df">T12</span><span class="sfa0">:</span><span class="sc80">34</span><span class="sfa0">:</span><span class="sc80">56</span><span class="sfa0">+</span><span class="sc80">00</span><span class="sfa0">:</span><span class="sc80">00</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">lastName</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">location</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Utah</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">maritalStatus</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Married</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">middleName</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">B</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">mobilePhone</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payChangeReason</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payGroupId</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payRate</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">123456.00</span><span class="s1f40"> </span><span class="s7df">USD</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payRateEffectiveDate</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">2000</span><span class="sfa0">-</span><span class="sc80">01</span><span class="sfa0">-</span><span class="sc80">01</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payType</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Salary</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payPer</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Year</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payPeriod</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Every</span><span class="s1f40"> </span><span class="s7df">other</span><span class="s1f40"> </span><span class="s7df">week</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">preferredName</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">ssn</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">state</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">UT</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">stateCode</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">UT</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">status</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Active</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">supervisor</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Jane</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">supervisorId</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">123457</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">supervisorEId</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">124</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">terminationDate</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">0000</span><span class="sfa0">-</span><span class="sc80">00</span><span class="sfa0">-</span><span class="sc80">00</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">workEmail</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">workPhone</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">workPhonePlusExtension</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">workPhoneExtension</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">zipcode</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">12345</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">isPhotoUploaded</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">false</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">)</span></code></pre>
+</div>
+<hr>
+
+<h4 id="byidid-fields--null">byId($id, $fields = null)</h4>
+
+<p><br></p>
+
+<p>Returns the user identified by <code>$id</code></p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770">// Defaults to all fields
+</span><span class="s1770"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employees</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">byId</span><span class="s1388">(</span><span class="sc80">123</span><span class="s1388">);</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770">// -OR-
+</span><span class="s1770"></span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770">// Specify which fields to return
+</span><span class="s1770"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employees</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">byId</span><span class="s1388">(</span><span class="sc80">123</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s1388">[</span><span class="sc1c">&#39;firstName&#39;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="sc1c">&#39;lastName&#39;</span><span class="s1388">]);</span></code></pre>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7df">BambooHR\Api\Response</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">code</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">200</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">reason</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">OK</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">errors</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">Array</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">response</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">stdClass</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">id</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">123</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">address1</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">123</span><span class="s1f40"> </span><span class="s7df">North</span><span class="s1f40"> </span><span class="s7df">Main</span><span class="s1f40"> </span><span class="s7df">St</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">address2</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">age</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">25</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">bestEmail</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">test</span><span class="sfa0">@</span><span class="s7df">yourcompany</span><span class="sfa0">.</span><span class="s7df">com</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">birthday</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">12</span><span class="sfa0">-</span><span class="sc80">25</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">city</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Lindon</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">country</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">dateOfBirth</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">1901</span><span class="sfa0">-</span><span class="sc80">01</span><span class="sfa0">-</span><span class="sc80">01</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">department</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">division</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">eeo</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">employeeNumber</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">123456</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">employmentHistoryStatus</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Full</span><span class="sfa0">-</span><span class="s7df">Time</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">ethnicity</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">flsaCode</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Exempt</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">firstName</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">fullName1</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">fullName2</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">fullName3</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40"> </span><span class="s7df">B</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">fullName4</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40"> </span><span class="s7df">B</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">fullName5</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40"> </span><span class="s7df">B</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">displayName</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">John</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">gender</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Male</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">hireDate</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">2000</span><span class="sfa0">-</span><span class="sc80">01</span><span class="sfa0">-</span><span class="sc80">01</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">originalHireDate</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">0000</span><span class="sfa0">-</span><span class="sc80">00</span><span class="sfa0">-</span><span class="sc80">00</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">homeEmail</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">john</span><span class="sfa0">@</span><span class="s7df">yourcompany</span><span class="sfa0">.</span><span class="s7df">com</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">homePhone</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">555</span><span class="sfa0">-</span><span class="sc80">123</span><span class="sfa0">-</span><span class="sc80">4567</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">jobTitle</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Job</span><span class="s1f40"> </span><span class="s7df">Title</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">lastChanged</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">2001</span><span class="sfa0">-</span><span class="sc80">01</span><span class="sfa0">-</span><span class="sc80">01</span><span class="s7df">T12</span><span class="sfa0">:</span><span class="sc80">34</span><span class="sfa0">:</span><span class="sc80">56</span><span class="sfa0">+</span><span class="sc80">00</span><span class="sfa0">:</span><span class="sc80">00</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">lastName</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">location</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Utah</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">maritalStatus</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Married</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">middleName</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">B</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">mobilePhone</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payChangeReason</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payGroupId</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payRate</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">123456.00</span><span class="s1f40"> </span><span class="s7df">USD</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payRateEffectiveDate</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">2000</span><span class="sfa0">-</span><span class="sc80">01</span><span class="sfa0">-</span><span class="sc80">01</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payType</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Salary</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payPer</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Year</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">payPeriod</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Every</span><span class="s1f40"> </span><span class="s7df">other</span><span class="s1f40"> </span><span class="s7df">week</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">preferredName</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">ssn</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">state</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">UT</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">stateCode</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">UT</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">status</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Active</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">supervisor</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">Jane</span><span class="s1f40"> </span><span class="s7df">Doe</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">supervisorId</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">123457</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">supervisorEId</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">124</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">terminationDate</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">0000</span><span class="sfa0">-</span><span class="sc80">00</span><span class="sfa0">-</span><span class="sc80">00</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">workEmail</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">workPhone</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">workPhonePlusExtension</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">workPhoneExtension</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> 
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">zipcode</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">12345</span><span class="s1f40">
+</span><span class="s1f40">            </span><span class="s1388">[</span><span class="s7df">isPhotoUploaded</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">false</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">)</span></code></pre>
+</div>
+<hr>
+
+<h4 id="directory">directory()</h4>
+
+<p><br></p>
+
+<p>Returns the employee directory</p>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employees</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">directory</span><span class="s1388">();</span></code></pre>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770">// TODO
+</span><span class="s1770"></span><span class="s7df">BambooHR\Api\Response</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">code</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">200</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">reason</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">OK</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">errors</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">Array</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">response</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">stdClass</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">)</span></code></pre>
+</div>
+<hr>
+
+<h4 id="addarray-data">add(array $data)</h4>
+
+<p><br></p>
+
+<p>Add a new employee</p>
+
+<p>See: <a href="https://www.bamboohr.com/api/documentation/employees.php#addEmployee">https://www.bamboohr.com/api/documentation/employees.php#addEmployee</a></p>
+
+<p><strong>Parameters</strong></p>
+
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th align="center">Required</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><p>$data</p>
+</td>
+<td><p>Array</p>
+</td>
+<td align="center"><p>✅</p>
+</td>
+<td><p>Data describing the employee to be created. <code>firstName</code> and <code>lastName</code> are the only required fields.</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$data</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">[</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="sc1c">&#39;firstName&#39;</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc1c">&#39;John&#39;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="sc1c">&#39;lastName&#39;</span><span class="s1f40">  </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc1c">&#39;Doe&#39;</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">];</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employees</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">add</span><span class="s1388">(</span><span class="s7d0">$data</span><span class="s1388">);</span></code></pre>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770">// TODO
+</span><span class="s1770"></span><span class="s7df">BambooHR\Api\Response</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">code</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">200</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">reason</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">OK</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">errors</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">Array</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">response</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">stdClass</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">)</span></code></pre>
+</div>
+<hr>
+
+<h4 id="updatestring-id-array-data">update(string $id, array $data)</h4>
+
+<p><br></p>
+
+<p>Edit/update an existing employee</p>
+
+<p>See: <a href="https://www.bamboohr.com/api/documentation/employees.php#updateEmployee">https://www.bamboohr.com/api/documentation/employees.php#updateEmployee</a></p>
+
+<p><strong>Parameters</strong></p>
+
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th align="center">Required</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><p>$id</p>
+</td>
+<td><p>Mixed (String)</p>
+</td>
+<td align="center"><p>✅</p>
+</td>
+<td><p>The employee ID to update</p>
+</td>
+</tr>
+
+<tr>
+<td><p>$data</p>
+</td>
+<td><p>Array</p>
+</td>
+<td align="center"><p>✅</p>
+</td>
+<td><p>The data to set on the employee</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$data</span><span class="s1f40"> </span><span class="sfa0">=</span><span class="s1f40"> </span><span class="s1388">[</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="sc1c">&#39;firstName&#39;</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc1c">&#39;Joe&#39;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="sc1c">&#39;lastName&#39;</span><span class="s1f40">  </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc1c">&#39;Schmo&#39;</span><span class="s1388">,</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">];</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employees</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">update</span><span class="s1388">(</span><span class="sc1c">&#39;123&#39;</span><span class="s1388">,</span><span class="s1f40"> </span><span class="s7d0">$data</span><span class="s1388">);</span></code></pre>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770">// TODO
+</span><span class="s1770"></span><span class="s7df">BambooHR\Api\Response</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">code</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">200</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">reason</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">OK</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">errors</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">Array</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">response</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">stdClass</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">)</span></code></pre>
+</div>
+<hr>
+
+<h4 id="filesstring-id">files(string $id)</h4>
+
+<p><br></p>
+
+<p>Get a list of files associated with the given employee</p>
+
+<p>See: <a href="https://www.bamboohr.com/api/documentation/employees.php#listEmployeeFiles">https://www.bamboohr.com/api/documentation/employees.php#listEmployeeFiles</a></p>
+
+<p><strong>Parameters</strong></p>
+
+<table class="table table-bordered">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th align="center">Required</th>
+<th>Description</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><p>$id</p>
+</td>
+<td><p>Mixed (String)</p>
+</td>
+<td align="center"><p>✅</p>
+</td>
+<td><p>An employee ID</p>
+</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Request</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s7d0">$bamboo</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">employee</span><span class="sfa0">-&gt;</span><span class="s1f40"></span><span class="s7d1">files</span><span class="s1388">(</span><span class="sc80">123</span><span class="s1388">);</span></code></pre>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="s1770">&lt;?php</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1770">// TODO
+</span><span class="s1770"></span><span class="s7df">BambooHR\Api\Response</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">code</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="sc80">200</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">reason</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s7df">OK</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">errors</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">Array</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40">    </span><span class="s1388">[</span><span class="s7df">response</span><span class="sfa0">:</span><span class="s3e8">protected</span><span class="s1388">]</span><span class="s1f40"> </span><span class="sfa0">=&gt;</span><span class="s1f40"> </span><span class="s3e8">stdClass</span><span class="s1f40"> </span><span class="s7df">Object</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">(</span><span class="s1f40">
+</span><span class="s1f40">        </span><span class="s1388">)</span><span class="s1f40">
+</span><span class="s1f40">
+</span><span class="s1f40"></span><span class="s1388">)</span></code></pre>
+</div>
+<hr>
+
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+
+        
+    </body>
+</html>

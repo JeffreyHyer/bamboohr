@@ -42,7 +42,7 @@ class Tables extends AbstractApi
 
     public function getTables()
     {
-        return $this->get("/meta/tables/");
+        return $this->get("meta/tables");
     }
 
 }

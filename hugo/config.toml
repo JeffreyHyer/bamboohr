@@ -1,0 +1,12 @@
+baseURL = "http://jeffreyhyer.github.io/bamboohr/"
+languageCode = "en-us"
+title = "BambooHR PHP SDK"
+theme = "simple-docs"
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+enableEmoji = true
+publishDir = "../docs"
+disableKinds = ["404", "RSS", "sitemap"]
+
+[params]
+    latestStableVersion = "0.1.2"

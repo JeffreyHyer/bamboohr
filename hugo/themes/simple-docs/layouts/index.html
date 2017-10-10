@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="white">
+        {{ .Hugo.Generator }}
+        
+        {{ with .Site.Params.author }}
+            <meta name="author" content="{{ . }}">
+        {{ end }}
+        
+        <meta name="description" content="{{ with .Site.Params.description }}{{ . }}{{ end }}">
+
+        {{ with .Site.Params.keywords }}
+            <meta name="keywords" content="{{ range $index, $element := $.Site.Params.keywords }}{{ if gt $index 0 }}, {{ end }}{{ . | safeHTML }}{{ else }}{{ . | safeHTML }}{{ end }}">
+        {{ end }}
+
+        <title>{{ .Site.Title }}</title>
+    
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/styles.css">
+        <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/pygments.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/4.4.0/font/octicons.min.css">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary justify-content-between">
+            <div class="container">
+                <a class="navbar-brand" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ .Site.BaseURL }}">Docs</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Changelog</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/jeffreyhyer/bamboohr"><i class="octicon octicon-mark-github"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container main-container">
+            <div class="row">
+                <div class="sidebar col-3">
+                    <ol>
+                        {{ range sort .Paginator.Pages }}
+                            {{ if .Params.link }}
+                                <li>
+                                    <a href="#{{ .Params.link | urlize }}">{{ .Params.link }}</a>
+                                    
+                                    {{ if .Params.children }}
+                                        <ol>
+                                            {{ range .Params.children }}
+                                                <li>
+                                                    <a href="#{{ . | urlize }}">{{ . }}</a>
+                                                </li>
+                                            {{ end }}
+                                        </ol>
+                                    {{ end }}
+                                </li>
+                            {{ end }}
+                        {{ end }}
+                    </ol>
+                </div>
+
+                <div class="content col-9">
+                    {{ range sort .Paginator.Pages }}
+                        <div class="section">
+                            {{ if eq .Weight 1 }}
+                                <h1><a href="#{{ .Params.link | urlize }}" id="{{ .Params.link | urlize }}" class="permalink">#</a>{{ .Title }}</h1>
+                            {{ else }}
+                                {{ if .Params.link }}
+                                    <h2><a href="#{{ .Params.link | urlize }}" id="{{ .Params.link | urlize }}" class="permalink">#</a>{{ .Title }}</h2>
+                                {{ else }}
+                                    <h4><a href="#{{ .Title | urlize }}" id="{{ .Title | urlize }}" class="permalink">#<a/>{{ .Title }}</h4>
+                                {{ end }}
+                            {{ end }}
+
+                            <br>
+
+                            {{ .Content }}
+                        </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+
+        <!-- <footer>
+            <div class="container">
+                <span class="small">This project is in no way affiliated with, nor endorsed by, BambooHR.</span>
+            </div>
+        </footer> -->
+
+        {{ with .Site.Params.google_analytics }}
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', '{{ . }}', 'auto');
+                ga('send', 'pageview');
+            </script>
+        {{ end }}
+    </body>
+</html>

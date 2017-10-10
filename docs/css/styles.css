@@ -1,0 +1,74 @@
+.navbar-expand-sm .navbar-nav .nav-item .nav-link {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.navbar-nav .nav-item:last-of-type .nav-link {
+    padding-right: 0;
+}
+
+.main-container {
+    margin-top: 4rem;
+    min-height: calc(100vh - 56px - 13.5rem);
+}
+
+.sidebar > ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar > ol li {
+    padding: 0.5rem 0;
+}
+
+.sidebar > ol > li:first-of-type {
+    padding-top: 0;
+}
+
+.sidebar > ol li ol {
+    list-style-type: square;
+    color: #ddd;
+    padding-left: 2rem;
+}
+
+.sidebar > ol li ol > li {
+    font-size: 0.875rem;
+    padding: 0.25rem 0;
+}
+
+.content h1 .permalink {
+    margin-left: -2.4rem;
+    margin-right: 0.8rem;
+}
+
+.content h2 .permalink {
+    margin-left: -2rem;
+    margin-right: 0.8rem;
+}
+
+.content h4 .permalink {
+    margin-left: -1.66rem;
+    margin-right: 0.8rem;
+}
+
+.content .section {
+    margin-top: 4rem;
+}
+
+.content .section:first-of-type {
+    margin-top: 0;
+}
+
+/* ... */
+
+footer {
+    background-color: #eeeeee;
+    margin-top: 4rem;
+    padding: 2rem 0;
+}
+
+footer .container {
+    text-align: center;
+    color: #aaaaaa;
+}
