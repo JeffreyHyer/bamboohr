@@ -25,7 +25,7 @@ class Response {
 
     public function hasErrors()
     {
-        return empty($this->errors);
+        return !empty($this->errors);
     }
 
     public function getErrors()
@@ -52,9 +52,9 @@ class Response {
     {
         foreach ($response->getHeaders() as $header => $value) {
             if ($header == "X-BambooHR-Error-Message") {
-                return $value;
+                return [$value];
             } else if ($header == "X-BambooHR-Error-Messsage") {
-                return $value;
+                return [$value];
             }
         }
 
