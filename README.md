@@ -3,11 +3,20 @@
 This repository contains a PHP SDK for use with the
 [BambooHR](https://bamboohr.com/) API.
 
+If you're looking to use this package inside a [Laravel](https://laravel.com/) application
+you may want to check out this package instead: [jeffreyhyer/bamboohr-laravel](https://github.com/jeffreyhyer/bamboohr-laravel).
+It wraps this package in a Service Provider and provides access via a Facade so the API is the
+same but you'll write less code and get the same results :+1:
+
 **DISCLAIMER:** This is **NOT** an official SDK, it is not affiliated with nor
-endorsed by BambooHR in any way. Use at your own risk.
+endorsed by BambooHR in any way.
 
 
 ## Installation
+
+> __NOTE__: This package currently requires PHP >= 7.0.0
+>
+> If you have a need for PHP 5.x support let me know by opening an issue (or feel free to submit a pull request).
 
 #### Via Composer
 

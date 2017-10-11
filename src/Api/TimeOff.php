@@ -45,27 +45,30 @@ class TimeOff extends AbstractApi
      */
     public function submitRequest($employeeId, array $data = [])
     {
-        // TODO: Cleanup...
-        $xml = "
-            <request>
+        $xml = "<request>
                 <status>requested</status>
                 <start>{$data['start']}</start>
                 <end>{$data['end']}</end>
                 <timeOffTypeId>{$data['timeOffTypeId']}</timeOffTypeId>
-                <amount>{$data['amount']}</amount>
-                <notes>
-                    <note from=\"employee\">{$data['notes']}</note>
-                </notes>
-                <dates>";
+                <amount>{$data['amount']}</amount>";
+        
+        if (isset($data['notes'])) {
+            $xml .= "<notes><note from=\"employee\">{$data['notes']}</note></notes>";
+        }
+
+        $xml .= "<dates>";
 
         foreach ($data['dates'] as $date => $hours) {
             $xml .= "<date ymd=\"{$date}\" amount=\"{$hours}\" />";
         }
 
-        $xml .= "
-                </dates>
-                <previousRequest>{$data['previousRequest']}</previousRequest>
-            </request>";
+        $xml .= "</dates>";
+
+        if (isset($data['previousRequest'])) {
+            $xml .="<previousRequest>{$data['previousRequest']}</previousRequest>";
+        }
+
+        $xml .= "</request>";
 
         return $this->put("employees/{$employeeId}/time_off/request", $xml);
     }
