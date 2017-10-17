@@ -2,7 +2,7 @@
 
 namespace BambooHR\Api;
 
-use Psr\Http\Message\ResponseInterface;
+use GuzzleHttp\Psr7\Response as ResponseInterface;
 
 class Response {
 
@@ -18,8 +18,7 @@ class Response {
     {
         $this->code = $response->getStatusCode();
         $this->reason = $response->getReasonPhrase();
-        $this->response = json_decode($response->getBody()->getContents());
-        
+        $this->response = $this->_parseResponse($response);
         $this->errors = $this->_getErrors($response);
     }
 
@@ -59,6 +58,35 @@ class Response {
         }
 
         return [];
+    }
+
+    private function _parseResponse(ResponseInterface $response)
+    {
+        if ($response->hasHeader('Content-Type')) {
+            $contentType = $response->getHeader('Content-Type');
+            
+            if (is_array($contentType)) {
+                $contentType = $contentType[0];
+            }
+
+            // JSON
+            if ($contentType == "application/json") {
+                return json_decode($response->getBody()->getContents());
+            }
+
+            // XML
+            // TODO: This method *may* present an issue if the XML has both an attribute AND
+            //       a value (e.g. <node id="1">value</node>) (see https://stackoverflow.com/a/20506281/2116923)
+            //       but this is untested in PHP 7.x (issue may have been resolved) and with
+            //       the BambooHR XML responses (may not contain XML with both attributes and values)
+            if (strpos($contentType, "text/xml") !== false) {
+                $xml = simplexml_load_string($response->getBody()->getContents());
+                return json_decode(stripslashes(json_encode($xml)));
+            }
+        }
+
+        // Default: Return the response as a string
+        return $response->getBody()->getContents();
     }
 
     /*
