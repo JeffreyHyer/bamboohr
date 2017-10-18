@@ -95,10 +95,7 @@ class BambooHR
      */
     public function _getHeaders($auth = true)
     {
-        $headers = [
-            'Content-Type'  => 'application/x-www-form-urlencoded',
-            'Accept'        => 'application/json',
-        ];
+        $headers = ['Accept' => 'application/json'];
 
         // HTTP Basic Auth
         if ($auth) {

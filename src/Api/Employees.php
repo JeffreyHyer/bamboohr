@@ -156,18 +156,42 @@ class Employees extends AbstractApi
      * 
      * @return \BambooHR\Api\Response
      */
-    public function addFileCategory(string $category) {}
+    public function addFileCategory(string $category)
+    {
+        $xml = "<employee><category>{$category}</category></employee>";
+
+        return $this->post("employees/files/categories", $xml);
+    }
 
     /**
      * Update an existing file for a given employee
      *
      * @param string $id Employee ID
      * @param string $fileId File ID
-     * @param array $data
+     * @param array $data ['name' => string, 'categoryId' => int, 'shareWithEmployee' => 'yes|no']
      * 
      * @return \BambooHR\Api\Response
      */
-    public function updateFile($id, $fileId, array $data) {}
+    public function updateFile($id, $fileId, array $data)
+    {
+        $xml = "<file>";
+
+        if (isset($data['name'])) {
+            $xml .= "<name>{$data['name']}</name>";
+        }
+
+        if (isset($data['categoryId'])) {
+            $xml .= "<categoryId>{$data['categoryId']}</categoryId>";
+        }
+
+        if (isset($data['shareWithEmployee'])) {
+            $xml .= "<shareWithEmployee>{$data['shareWithEmployee']}</shareWithEmployee>";
+        }
+
+        $xml .= "</file>";
+
+        return $this->post("employees/{$id}/files/{$fileId}", $xml);
+    }
 
     /**
      * Delete a given file for an employee
@@ -177,7 +201,10 @@ class Employees extends AbstractApi
      *
      * @return \BambooHR\Api\Response
      */
-    public function deleteFile($id, $fileId) {}
+    public function deleteFile($id, $fileId)
+    {
+        return $this->delete("employees/{$id}/files/{$fileId}");
+    }
 
     /**
      * Download a given file for an employee
@@ -197,6 +224,9 @@ class Employees extends AbstractApi
      * 
      * @return \BambooHR\Api\Response
      */
-    public function uploadFile($id, array $data) {}
+    public function uploadFile($id, array $data)
+    {
+        return $this->postFile("employees/{$id}/files", $data);
+    }
 
 }

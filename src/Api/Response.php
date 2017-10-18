@@ -85,7 +85,6 @@ class Response {
             }
         }
 
-        // Default: Return the response as a string
         return $response->getBody()->getContents();
     }
 

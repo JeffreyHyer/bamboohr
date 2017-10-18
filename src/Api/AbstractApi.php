@@ -61,14 +61,19 @@ abstract class AbstractApi
      */
     public function post($path, $body, $queryStr = [], $auth = true)
     {
+        $request = ['headers' => $this->bamboo->_getHeaders($auth)];
+
+        if (is_array($body)) {
+            $request['form_params'] = $body;
+        } else {
+            $request['body'] = $body;
+        }
+
         try {
             $response = $this->bamboo->client->request(
                 'POST',
                 $this->bamboo->_buildUrl($path, $queryStr),
-                [
-                    'headers' => $this->bamboo->_getHeaders($auth),
-                    'body' => ((is_array($body)) ? http_build_query($body) : $body)
-                ]
+                $request
             );
 
             return $this->_respond($response);
@@ -93,14 +98,19 @@ abstract class AbstractApi
      */
     public function put($path, $body, $queryStr = [], $auth = true)
     {
+        $request = ['headers' => $this->bamboo->_getHeaders($auth)];
+
+        if (is_array($body)) {
+            $request['form_params'] = $body;
+        } else {
+            $request['body'] = $body;
+        }
+
         try {
             $response = $this->bamboo->client->request(
                 'PUT',
                 $this->bamboo->_buildUrl($path, $queryStr),
-                [
-                    'headers' => $this->bamboo->_getHeaders($auth),
-                    'body' => ((is_array($body)) ? http_build_query($body) : $body)
-                ]
+                $request
             );
 
             return $this->_respond($response);
@@ -130,6 +140,55 @@ abstract class AbstractApi
                 $this->bamboo->_buildUrl($path, $queryStr),
                 [
                     'headers' => $this->bamboo->_getHeaders($auth)
+                ]
+            );
+
+            return $this->_respond($response);
+        } catch (\GuzzleHttp\Exception\TransferException $e) {
+            if ($e->hasResponse()) {
+                return $this->_respond($e->getResponse());
+            } else {
+                throw $e;
+            }
+        }
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $path
+     * @param array $body   ['NAME' => 'VALUE', ..., 'file' => ['name' => string, 'filename' => string, 'mimeType' => string, 'contents' => string]]
+     * @param array $queryStr
+     * @param boolean $auth
+     * @return void
+     */
+    public function postFile($path, array $body, $queryStr = [], $auth = true)
+    {
+        $multipart = [];
+
+        foreach ($body as $key => $value) {
+            if ($key == "file") {
+                $multipart[] = [
+                    'name' => $value['name'],
+                    'contents' => $value['contents'],
+                    'headers' => ['Content-Type' => $value['mimeType']],
+                    'filename' => $value['filename'],
+                ];
+            } else {
+                $multipart[] = [
+                    'name' => $key,
+                    'contents' => $value,
+                ];
+            }
+        }
+
+        try {
+            $response = $this->bamboo->client->request(
+                'POST',
+                $this->bamboo->_buildUrl($path, $queryStr),
+                [
+                    'headers' => $this->bamboo->_getHeaders($auth),
+                    'multipart' => $multipart
                 ]
             );
 
