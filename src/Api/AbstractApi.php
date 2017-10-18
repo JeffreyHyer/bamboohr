@@ -171,7 +171,7 @@ abstract class AbstractApi
                 $multipart[] = [
                     'name' => $value['name'],
                     'contents' => $value['contents'],
-                    'headers' => ['Content-Type' => $value['mimeType']],
+                    'headers' => (isset($value['mimeType']) ? ['Content-Type' => $value['mimeType']] : []),
                     'filename' => $value['filename'],
                 ];
             } else {
