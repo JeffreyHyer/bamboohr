@@ -2,6 +2,9 @@
 
 namespace BambooHR\Api;
 
+/**
+ * @link https://www.bamboohr.com/api/documentation/employees.php
+ */
 class Employees extends AbstractApi
 {
 
@@ -120,21 +123,43 @@ class Employees extends AbstractApi
     /**
      * Add a new employee
      *
-     * @param array $data
+     * @param array $fields
      * 
      * @return \BambooHR\Api\Response
      */
-    public function add(array $data) {}
+    public function add(array $fields)
+    {
+        $xml = "<employee>";
+
+        foreach ($fields as $field => $value) {
+            $xml .= "<field id=\"{$field}\">{$value}</field>";
+        }
+
+        $xml .= "<employee>";
+
+        return $this->post("employees", $xml);
+    }
 
     /**
      * Update an existing employee identified by their ID
      *
      * @param string $id
-     * @param array $data
+     * @param array $fields
      * 
      * @return \BambooHR\Api\Response
      */
-    public function update($id, array $data) {}
+    public function update($id, array $fields)
+    {
+        $xml = "<employee>";
+
+        foreach ($fields as $field => $value) {
+            $xml .= "<field id=\"{$field}\">{$value}</field>";
+        }
+
+        $xml .= "</employee>";
+
+        return $this->post("employees/{$id}", $xml);
+    }
 
     /**
      * Return a list of files associated with a given employee
@@ -214,7 +239,10 @@ class Employees extends AbstractApi
      * 
      * @return \BambooHR\Api\Response
      */
-    public function downloadFile($id, $fileId) {}
+    public function downloadFile($id, $fileId)
+    {
+        return $this->get("employees/{$id}/files/{$fileId}");
+    }
 
     /**
      * Upload a file to a given employee

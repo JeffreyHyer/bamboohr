@@ -94,6 +94,16 @@ class TimeOff extends AbstractApi
         return $this->put("time_off/requests/{$requestId}/status", $xml);
     }
 
+    /**
+     * Add a time off history entry
+     *
+     * @param string $employeeId
+     * @param string $requestId
+     * @param string $date
+     * @param string $note
+     * 
+     * @return \BambooHR\Api\Response
+     */
     public function addHistoryEntry($employeeId, $requestId, string $date, string $note)
     {
         $xml = "
@@ -108,6 +118,13 @@ class TimeOff extends AbstractApi
         $this->put("employees/{$employeeId}/time_off/history", $xml);
     }
 
+    /**
+     * List assigned time off policies for a given employee
+     *
+     * @param string $employeeId
+     * 
+     * @return \BambooHR\Api\Response
+     */
     public function assignedPolicies($employeeId)
     {
         $this->bamboo->options['version'] = 'v1_1';
@@ -117,6 +134,53 @@ class TimeOff extends AbstractApi
         $this->bamboo->options['version'] = 'v1';
 
         return $response;
+    }
+
+    /**
+     * Assign one or more time off policies to a given employee
+     * 
+     * @link https://www.bamboohr.com/api/documentation/time_off.php#assignTimeOffPolicies1.1
+     *
+     * @param string $employeeId
+     * @param array $policies
+     * 
+     * @return \BambooHR\Api\Response
+     */
+    public function assignPolicy($employeeId, array $policies)
+    {
+        $this->bamboo->options['version'] = 'v1_1';
+        
+        $response = $this->put("employees/{$employeeId}/time_off/policies", json_encode($policies));
+
+        $this->bamboo->options['version'] = 'v1';
+
+        return $response;
+    }
+
+    public function addHistoryOverride($employeeId, array $data)
+    {
+        $xml = "<history>";
+
+        if (isset($data['date'])) {
+            $xml .= "<date>{$data['date']}</date>";
+        }
+
+        if (isset($data['timeOffTypeId'])) {
+            $xml .= "<timeOffTypeId>{$data['timeOffTypeId']}</timeOffTypeId>";
+        }
+
+        if (isset($data['amount'])) {
+            $xml .= "<amount>{$data['amount']}</amount>";
+        }
+
+        if (isset($data['note'])) {
+            $xml .= "<note>{$data['note']}</note>";
+        }
+
+        $xml .= "<eventType>override</eventType>";
+        $xml .= "</history>";
+
+        return $this->put("employees/{$employeeId}/time_off/history", $xml);
     }
 
     public function whosOut(string $start = "", string $end = "")

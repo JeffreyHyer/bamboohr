@@ -45,4 +45,43 @@ class Tables extends AbstractApi
         return $this->get("meta/tables");
     }
 
+    public function addRow($employeeId, $table, array $fields)
+    {
+        $xml = "<row>";
+
+        foreach ($fields as $field => $value) {
+            $xml .= "<field id=\"{$field}\">{$value}</field>";
+        }
+        
+        $xml .= "</row>";
+
+        $this->bamboo->options['version'] = "v1_1";
+        $response = $this->post("employees/{$employeeId}/tables/{$table}", $xml);
+        $this->bamboo->options['version'] = "v1";
+
+        return $response;
+    }
+
+    public function updateRow($employeeId, $table, $rowId, array $fields)
+    {
+        $xml = "<row>";
+
+        foreach ($fields as $field => $value) {
+            $xml .= "<field id=\"{$field}\">{$value}</field>";
+        }
+        
+        $xml .= "</row>";
+
+        $this->bamboo->options['version'] = "v1_1";
+        $response = $this->post("employees/{$employeeId}/tables/{$table}/{$rowId}", $xml);
+        $this->bamboo->options['version'] = "v1";
+
+        return $response;
+    }
+
+    public function changedSince($table, $timestamp)
+    {
+        return $this->get("employees/changed/tables/{$table}", ['since' => $timestamp]);
+    }
+
 }
