@@ -115,12 +115,18 @@ class BambooHR
     protected function api($name)
     {
         switch ($name) {
+            case 'company':
+            return new Api\Company($this);
+
             case 'employee':
             case 'employees':
                 return new Api\Employees($this);
-            
-            case 'company':
-                return new Api\Company($this);
+
+            case 'photo':
+            case 'photos':
+            case 'image':
+            case 'images':
+                return new Api\Photos($this);
 
             case 'report':
             case 'reports':
