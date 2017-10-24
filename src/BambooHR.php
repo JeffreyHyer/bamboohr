@@ -122,11 +122,16 @@ class BambooHR
             case 'employees':
                 return new Api\Employees($this);
 
-            case 'photo':
-            case 'photos':
             case 'image':
             case 'images':
+            case 'photo':
+            case 'photos':
                 return new Api\Photos($this);
+
+            case 'meta':
+            case 'metadata':
+            case 'metaData':
+                return new Api\Metadata($this);
 
             case 'report':
             case 'reports':

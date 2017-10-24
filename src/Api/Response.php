@@ -70,15 +70,17 @@ class Response {
             }
 
             // JSON
-            if ($contentType == "application/json") {
+            if (strpos($contentType, "application/json") !== false) {
                 return json_decode($response->getBody()->getContents());
             }
 
-            // XML
+            // ----------
             // TODO: This method *may* present an issue if the XML has both an attribute AND
             //       a value (e.g. <node id="1">value</node>) (see https://stackoverflow.com/a/20506281/2116923)
             //       but this is untested in PHP 7.x (issue may have been resolved) and with
             //       the BambooHR XML responses (may not contain XML with both attributes and values)
+            // ----------
+            // XML
             if (strpos($contentType, "text/xml") !== false) {
                 $xml = simplexml_load_string($response->getBody()->getContents());
                 return json_decode(stripslashes(json_encode($xml)));
