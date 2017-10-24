@@ -257,4 +257,58 @@ class Employees extends AbstractApi
         return $this->postFile("employees/{$id}/files", $data);
     }
 
+    /**
+     * An undocumented BambooHR API endpoint for
+     * bulk importing employees.
+     * 
+     * NOTES:
+     *  - This method is untested. Use are your own risk.
+     *  - There is some limitations with this implementation of XML
+     *    generation. For example, it does not support tag attributes
+     *    on nested elements (within the <employee> element). It may or
+     *    may not be an issue depending on your use case.
+     *    
+     *    e.g. use of `<termDate isNull="true"></termDate>` wouldn't work
+     * 
+     * @link https://github.com/BambooHR/bhr-api-php/blob/master/BambooHR/API/API.php#L954
+     * @link https://github.com/BambooHR/bhr-api-php/blob/master/test_import.xml
+     *
+     * @param array $data [[_employee_], ...]
+     * 
+     * @return BambooHR\Api\Response
+     */
+    public function import(array $data)
+    {
+        $xml = "<employees>";
+
+        foreach ($data as $user) {
+            $xml .= "<employee";
+            $xml .= (isset($user['number']) ? " number=\"{$user['number']}\">" : ">");
+
+            foreach ($user as $key => $value) {
+                if ($key == "number") {
+                    continue;
+                }
+
+                if (is_array($value)) {
+                    $xml .= "<{$key}>";
+
+                    foreach ($value as $vKey => $vValue) {
+                        $xml .= "<{$vKey}>{$vValue}</{$vKey}>";
+                    }
+
+                    $xml .= "</{$key}>";
+                } else {
+                    $xml .= "<{$key}>{$value}</{$key}>";
+                }
+            }
+
+            $xml .= "</employee>";
+        }
+
+        $xml .= "</employees>";
+
+        return $this->post("employees/import", $xml);
+    }
+
 }
