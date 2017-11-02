@@ -128,6 +128,16 @@ class BambooHR
             case 'photos':
                 return new Api\Photos($this);
 
+            case 'lastChanged':
+            case 'lastChange':
+            case 'changed':
+            case 'changes':
+                return new Api\LastChanged($this);
+
+            case 'login':
+            case 'auth':
+                return new Api\Login($this);
+
             case 'meta':
             case 'metadata':
             case 'metaData':
