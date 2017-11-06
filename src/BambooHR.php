@@ -143,6 +143,9 @@ class BambooHR
             case 'metaData':
                 return new Api\Metadata($this);
 
+            case 'payroll':
+                return new Api\Payroll($this);
+
             case 'report':
             case 'reports':
                 return new Api\Reports($this);
