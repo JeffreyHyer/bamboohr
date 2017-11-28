@@ -51,7 +51,7 @@ class Reports extends AbstractApi
         $xml .= "</fields>";
         $xml .= "</report>";
 
-        return $this->post("reports/custom", ['format' => $format], $xml);
+        return $this->post("reports/custom", $xml, ['format' => $format]);
     }
 
 }
