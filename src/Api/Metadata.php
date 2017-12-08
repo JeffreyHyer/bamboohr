@@ -66,7 +66,7 @@ class Metadata extends AbstractApi
             $xml .= ">{$option['value']}</option>";
         }
 
-        $xml = "</options>";
+        $xml .= "</options>";
 
         return $this->put("meta/lists/{$listId}", $xml);
     }
