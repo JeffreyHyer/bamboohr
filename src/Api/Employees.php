@@ -135,7 +135,7 @@ class Employees extends AbstractApi
             $xml .= "<field id=\"{$field}\">{$value}</field>";
         }
 
-        $xml .= "<employee>";
+        $xml .= "</employee>";
 
         return $this->post("employees", $xml);
     }
