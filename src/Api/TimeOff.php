@@ -45,9 +45,15 @@ class TimeOff extends AbstractApi
      */
     public function submitRequest($employeeId, array $data = [])
     {
-        $xml = "<request>
-                <status>requested</status>
-                <start>{$data['start']}</start>
+        $xml = "<request>";
+
+        if(isset($data['status'])) {
+            $xml .= "<status>" . $data['status'] . "</status>";
+        } else {
+            $xml .= "<status>requested</status>";
+        }
+
+        $xml .= "<start>{$data['start']}</start>
                 <end>{$data['end']}</end>
                 <timeOffTypeId>{$data['timeOffTypeId']}</timeOffTypeId>
                 <amount>{$data['amount']}</amount>";
