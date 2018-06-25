@@ -47,8 +47,8 @@ class TimeOff extends AbstractApi
     {
         $xml = "<request>";
 
-        if(isset($data['status'])) {
-            $xml .= "<status>" . $data['status'] . "</status>";
+        if (isset($data['status'])) {
+            $xml .= "<status>{$data['status']}</status>";
         } else {
             $xml .= "<status>requested</status>";
         }
