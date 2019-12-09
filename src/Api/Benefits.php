@@ -15,7 +15,7 @@ class Benefits extends AbstractApi
      *
      * @param string $benefitCoverageId [Optional]
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getBenefitCoverages($benefitCoverageId = null)
     {
@@ -29,7 +29,7 @@ class Benefits extends AbstractApi
      *
      * @param string $employeeId
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getEmployeeDependents($employeeId = null)
     {
@@ -44,7 +44,7 @@ class Benefits extends AbstractApi
      * @param string $dependentId
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function updateEmployeeDependent($dependentId, $data = array())
     {
@@ -56,7 +56,7 @@ class Benefits extends AbstractApi
      *
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function addEmployeeDependent($data)
     {
@@ -68,7 +68,7 @@ class Benefits extends AbstractApi
      *
      * @param string $planId
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getBenefitPlans($planId = null)
     {
@@ -83,7 +83,7 @@ class Benefits extends AbstractApi
      * @param string $planId
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function updateBenefitPlan($planId, $data)
     {
@@ -95,7 +95,7 @@ class Benefits extends AbstractApi
      *
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function addBenefitPlan($data)
     {
@@ -107,7 +107,7 @@ class Benefits extends AbstractApi
      *
      * @param string $id [Optional]
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getBenefitPlanCoverages($id)
     {
@@ -122,7 +122,7 @@ class Benefits extends AbstractApi
      * @param string $id
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function updateBenefitPlanCoverage($id, $data)
     {
@@ -145,7 +145,7 @@ class Benefits extends AbstractApi
      *
      * @param string $id
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getBenefitGroup($id = null)
     {
@@ -160,7 +160,7 @@ class Benefits extends AbstractApi
      * @param string $id
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function updateBenefitGroup($id, $data)
     {
@@ -172,7 +172,7 @@ class Benefits extends AbstractApi
      *
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function addBenefitGroup($data)
     {
@@ -184,7 +184,7 @@ class Benefits extends AbstractApi
      *
      * @param string $id [Optional]
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getBenefitGroupEmployees($id = null)
     {
@@ -198,7 +198,7 @@ class Benefits extends AbstractApi
      *
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function addBenefitGroupEmployee($data)
     {
@@ -210,7 +210,7 @@ class Benefits extends AbstractApi
      *
      * @param string $id [Optional]
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getBenefitGroupPlans($id)
     {
@@ -224,7 +224,7 @@ class Benefits extends AbstractApi
      *
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function addBenefitGroupPlan($data)
     {
@@ -236,7 +236,7 @@ class Benefits extends AbstractApi
      *
      * @param string $id
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getBenefitGroupPlanCosts($id = null)
     {
@@ -250,7 +250,7 @@ class Benefits extends AbstractApi
      *
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function addBenefitGroupPlanCost($data)
     {
@@ -263,7 +263,7 @@ class Benefits extends AbstractApi
      * @param string $planId
      * @param string $employeeId [Optional]
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getEmployeeDeductionsByBenefitPlan($planId, $employeeId = null)
     {
@@ -275,7 +275,7 @@ class Benefits extends AbstractApi
      *
      * @param string $id Employee ID
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getPlanDeductionsByEmployee($id)
     {
@@ -287,7 +287,7 @@ class Benefits extends AbstractApi
      *
      * @param string $id
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getBenefitDeductionsForEmployee($id)
     {

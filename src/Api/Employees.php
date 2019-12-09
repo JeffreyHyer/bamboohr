@@ -275,7 +275,7 @@ class Employees extends AbstractApi
      *
      * @param array $data [[_employee_], ...]
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function import(array $data)
     {

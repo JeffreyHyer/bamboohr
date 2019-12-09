@@ -13,7 +13,7 @@ class Metadata extends AbstractApi
     /**
      * Get a list of fields
      *
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function fields()
     {
@@ -23,7 +23,7 @@ class Metadata extends AbstractApi
     /**
      * Get a list of tabular fields
      *
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function tables()
     {
@@ -33,7 +33,7 @@ class Metadata extends AbstractApi
     /**
      * Get the details for "list" fields
      *
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function lists()
     {
@@ -46,7 +46,7 @@ class Metadata extends AbstractApi
      * @param string $listId
      * @param array $options [['id' => string (optional), 'archived' => 'yes|no' (optional), 'value' => string (required)], ...]
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function addEditList($listId, array $options)
     {
@@ -74,7 +74,7 @@ class Metadata extends AbstractApi
     /**
      * Get a list of time off types
      *
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function timeOffTypes()
     {
@@ -84,7 +84,7 @@ class Metadata extends AbstractApi
     /**
      * Get a list of time off policies
      *
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function timeOffPolicies()
     {
@@ -94,7 +94,7 @@ class Metadata extends AbstractApi
     /**
      * Get a list of users
      *
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function users()
     {

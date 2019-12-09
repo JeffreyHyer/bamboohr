@@ -17,7 +17,7 @@ class TimeOff extends AbstractApi
      *                       returned. See https://www.bamboohr.com/api/documentation/time_off.php
      *                       for details.
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function requests(array $filters = [])
     {
@@ -41,7 +41,7 @@ class TimeOff extends AbstractApi
      *                          'previousRequest' => [integer]
      *                      ]
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function submitRequest($employeeId, array $data = [])
     {
@@ -86,7 +86,7 @@ class TimeOff extends AbstractApi
      * @param string $status
      * @param string $note
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function changeRequestStatus($requestId, $status, string $note = "")
     {
