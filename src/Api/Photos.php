@@ -17,7 +17,7 @@ class Photos extends AbstractApi
      *
      * @param string $id The employee ID
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getEmployeePhoto($id)
     {
@@ -35,7 +35,7 @@ class Photos extends AbstractApi
      * @param string $id
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function uploadEmployeePhoto($id, array $data)
     {

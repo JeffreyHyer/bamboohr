@@ -8,7 +8,7 @@ class Company extends AbstractApi
     /**
      * Get a list of files and categories associated with the company
      *
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function files()
     {
@@ -20,7 +20,7 @@ class Company extends AbstractApi
      *
      * @param string $category
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function addFileCategory($category)
     {
@@ -35,7 +35,7 @@ class Company extends AbstractApi
      * @param string $fileId
      * @param array $data ['name' => string, 'categoryId' => integer, 'shareWithEmployee' => 'yes|no']
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function updateFile($fileId, array $data)
     {
@@ -63,7 +63,7 @@ class Company extends AbstractApi
      *
      * @param string $fileId
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function deleteFile($fileId)
     {
@@ -75,7 +75,7 @@ class Company extends AbstractApi
      *
      * @param string $fileId
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function downloadFile($fileId)
     {
@@ -87,7 +87,7 @@ class Company extends AbstractApi
      *
      * @param array $data
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function uploadFile(array $data)
     {

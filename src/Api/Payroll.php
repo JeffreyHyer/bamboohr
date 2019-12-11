@@ -68,7 +68,7 @@ class Payroll extends AbstractApi
      *
      * @param string $employeeId
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getDirectDeposit($employeeId)
     {
@@ -80,7 +80,7 @@ class Payroll extends AbstractApi
      *
      * @param string $employeeId
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function clearDirectDeposit($employeeId)
     {
@@ -93,7 +93,7 @@ class Payroll extends AbstractApi
      * @param string $employeeId
      * @param array $stubs
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function addUnpaidPayStubs($employeeId, $stubs = array())
     {
@@ -105,7 +105,7 @@ class Payroll extends AbstractApi
      *
      * @param string $employeeId
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getUnpaidPayStubs($employeeId)
     {
@@ -117,7 +117,7 @@ class Payroll extends AbstractApi
      *
      * @param string $employeeId
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function clearUnpaidPayStubs($employeeId)
     {
@@ -130,7 +130,7 @@ class Payroll extends AbstractApi
      * @param string $employeeId
      * @param array $stub
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function addPayStub($employeeId, $stub = array())
     {
@@ -142,7 +142,7 @@ class Payroll extends AbstractApi
      *
      * @param string $recordId
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getPayStub($recordId)
     {
@@ -154,7 +154,7 @@ class Payroll extends AbstractApi
      *
      * @param string $recordId
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function deletePayStub($recordId)
     {
@@ -166,7 +166,7 @@ class Payroll extends AbstractApi
      *
      * @param string $employeeId
      * 
-     * @return BambooHR\Api\Response
+     * @return \BambooHR\Api\Response
      */
     public function getPayrollDeductions($employeeId)
     {
