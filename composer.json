@@ -3,7 +3,7 @@
     "type": "library",
     "description": "PHP SDK for the BambooHR API",
     "keywords": ["bamboohr", "api", "sdk", "unofficial", "php", "php7"],
-    "version": "1.0.4",
+    "version": "1.0.5",
     "license": "MIT",
     "homepage": "https://github.com/jeffreyhyer/bamboohr",
     "support": {
