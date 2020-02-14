@@ -28,7 +28,7 @@ Or add the following to your `composer.json` file:
 ```json
 {
     "require": {
-        "jeffreyhyer/bamboohr": "~1.0.4"
+        "jeffreyhyer/bamboohr": "~1.0.6"
     }
 }
 ```
