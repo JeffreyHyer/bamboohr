@@ -15,8 +15,6 @@ endorsed by BambooHR in any way.
 ## Installation
 
 > __NOTE__: This package currently requires PHP >= 7.0.0
->
-> If you have a need for PHP 5.x support let me know by opening an issue (or feel free to submit a pull request).
 
 #### Via Composer
 
@@ -28,7 +26,7 @@ Or add the following to your `composer.json` file:
 ```json
 {
     "require": {
-        "jeffreyhyer/bamboohr": "~1.0.6"
+        "jeffreyhyer/bamboohr": "~1.0.7"
     }
 }
 ```

@@ -40,7 +40,7 @@ abstract class AbstractApi
             );
 
             return $this->_respond($response);
-        } catch (\GuzzleHttp\Exception\TransferException $e) {
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
             if ($e->hasResponse()) {
                 return $this->_respond($e->getResponse());
             } else {
@@ -77,7 +77,7 @@ abstract class AbstractApi
             );
 
             return $this->_respond($response);
-        } catch (\GuzzleHttp\Exception\TransferException $e) {
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
             if ($e->hasResponse()) {
                 return $this->_respond($e->getResponse());
             } else {
@@ -114,7 +114,7 @@ abstract class AbstractApi
             );
 
             return $this->_respond($response);
-        } catch (\GuzzleHttp\Exception\TransferException $e) {
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
             if ($e->hasResponse()) {
                 return $this->_respond($e->getResponse());
             } else {
@@ -144,7 +144,7 @@ abstract class AbstractApi
             );
 
             return $this->_respond($response);
-        } catch (\GuzzleHttp\Exception\TransferException $e) {
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
             if ($e->hasResponse()) {
                 return $this->_respond($e->getResponse());
             } else {
@@ -193,7 +193,7 @@ abstract class AbstractApi
             );
 
             return $this->_respond($response);
-        } catch (\GuzzleHttp\Exception\TransferException $e) {
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
             if ($e->hasResponse()) {
                 return $this->_respond($e->getResponse());
             } else {
